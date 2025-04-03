@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Livres</title>
+</head>
+<body>
+<h1>Liste des Livres</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Auteur</th>
+        <th>Actions</th>
+    </tr>
+    {% for livre in livres %}
+    <tr>
+        <td>{{ livre.id }}</td>
+        <td>{{ livre.titre }}</td>
+        <td>{{ livre.auteur }}</td>
+        <td>
+            <a href="{% url 'read' livre.id %}">Voir</a> |
+            <a href="{% url 'update' livre.id %}">Modifier</a> |
+            <a href="{% url 'delete' livre.id %}">Supprimer</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'ajout' %}">Ajouter un nouveau Livre</a>
+</body>
+</html>
